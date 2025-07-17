@@ -29,7 +29,7 @@ const ProjectHeader = () => {
   const project = data?.project;
 
   // Fallback if no project data is found
-  const projectEmoji = project?.emoji || "📊";
+  const projectEmoji = project?.emoji;
   const projectName = project?.name || "Untitled project";
 
   const renderContent = () => {

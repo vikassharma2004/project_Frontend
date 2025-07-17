@@ -129,6 +129,7 @@ export default function CreateTaskForm(props) {
       title: "",
       description: "",
       projectId: projectId ? projectId : "",
+    
     },
   });
 
@@ -145,9 +146,10 @@ export default function CreateTaskForm(props) {
       projectId: values.projectId,
       data: {
         ...values,
-        dueDate: values.dueDate.toISOString(),
+        dueDate: values.dueDate?.toISOString(),
       },
     };
+    console.log(payload);
 
     mutate(payload, {
       onSuccess: () => {
@@ -336,7 +338,7 @@ export default function CreateTaskForm(props) {
                   <FormItem>
                     <FormLabel>Due Date</FormLabel>
                     <Popover>
-                      <PopoverTrigger asChild>
+                      <PopoverTrigger>
                         <FormControl>
                           <Button
                             variant={"outline"}
@@ -452,7 +454,7 @@ export default function CreateTaskForm(props) {
             </div>
 
             <Button
-              className="flex place-self-end  h-[40px] text-white font-semibold"
+              className="flex place-self-end  h-[40px] text-white font-semibold cursor-pointer"
               type="submit"
               disabled={isPending}
             >

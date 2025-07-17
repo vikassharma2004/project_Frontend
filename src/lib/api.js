@@ -9,8 +9,7 @@ export const loginMutationFn = async (data) => {
 export const registerMutationFn = async (data) =>
   await API.post("/auth/register", data);
 
-export const logoutMutationFn = async () =>
-  await API.post("/auth/logout");
+export const logoutMutationFn = async () => await API.post("/auth/logout");
 
 export const getCurrentUserQueryFn = async () => {
   const response = await API.get(`/user/current`);
@@ -48,9 +47,12 @@ export const getWorkspaceAnalyticsQueryFn = async (workspaceId) => {
   return response.data;
 };
 
-export const changeWorkspaceMemberRoleMutationFn = async ({ workspaceId, data }) => {
+export const changeWorkspaceMemberRoleMutationFn = async ({
+  workspaceId,
+  data,
+}) => {
   const response = await API.put(
-    `/workspace/change/member/role/${workspaceId}`,
+    `/workspace/change/member-role/${workspaceId}`,
     data
   );
   return response.data;
@@ -70,13 +72,17 @@ export const invitedUserJoinWorkspaceMutationFn = async (inviteCode) => {
 // PROJECT
 export const createProjectMutationFn = async ({ workspaceId, data }) => {
   const response = await API.post(
-    `/project/workspace/${workspaceId}/create`,
+    `/project/workspace/${workspaceId}/project/create`,
     data
   );
   return response.data;
 };
 
-export const editProjectMutationFn = async ({ projectId, workspaceId, data }) => {
+export const editProjectMutationFn = async ({
+  projectId,
+  workspaceId,
+  data,
+}) => {
   const response = await API.put(
     `/project/${projectId}/workspace/${workspaceId}/update`,
     data
@@ -102,7 +108,10 @@ export const getProjectByIdQueryFn = async ({ workspaceId, projectId }) => {
   return response.data;
 };
 
-export const getProjectAnalyticsQueryFn = async ({ workspaceId, projectId }) => {
+export const getProjectAnalyticsQueryFn = async ({
+  workspaceId,
+  projectId,
+}) => {
   const response = await API.get(
     `/project/${projectId}/workspace/${workspaceId}/analytics`
   );
@@ -117,7 +126,11 @@ export const deleteProjectMutationFn = async ({ workspaceId, projectId }) => {
 };
 
 // TASK
-export const createTaskMutationFn = async ({ workspaceId, projectId, data }) => {
+export const createTaskMutationFn = async ({
+  workspaceId,
+  projectId,
+  data,
+}) => {
   const response = await API.post(
     `/task/project/${projectId}/workspace/${workspaceId}/create`,
     data
@@ -125,7 +138,12 @@ export const createTaskMutationFn = async ({ workspaceId, projectId, data }) => 
   return response.data;
 };
 
-export const editTaskMutationFn = async ({ taskId, projectId, workspaceId, data }) => {
+export const editTaskMutationFn = async ({
+  taskId,
+  projectId,
+  workspaceId,
+  data,
+}) => {
   const response = await API.put(
     `/task/${taskId}/project/${projectId}/workspace/${workspaceId}/update/`,
     data

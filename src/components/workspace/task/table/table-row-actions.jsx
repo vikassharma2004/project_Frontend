@@ -19,7 +19,7 @@ import EditTaskDialog from "../edit-task-dialog";
 
 export function DataTableRowActions({ row }) {
   const [openDeleteDialog, setOpenDialog] = useState(false);
-  const [openEditDialog, setOpenEditDialog] = useState(false);
+  const [openEditDialog, setOpenEditDialog] = useState(false)
 
   const queryClient = useQueryClient();
   const workspaceId = useWorkspaceId();
@@ -51,7 +51,7 @@ export function DataTableRowActions({ row }) {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
+        <DropdownMenuTrigger>
           <Button variant="ghost" className="flex h-8 w-8 p-0 data-[state=open]:bg-muted">
             <MoreHorizontal />
             <span className="sr-only">Open menu</span>

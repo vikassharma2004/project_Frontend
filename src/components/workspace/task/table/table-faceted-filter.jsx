@@ -37,7 +37,7 @@ export function DataTableFacetedFilter({
 
   return (
     <Popover modal={true} open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger>
         <Button
           disabled={disabled}
           variant="outline"
@@ -118,7 +118,7 @@ export function DataTableFacetedFilter({
                       </div>
                     )}
                     {option.icon && (
-                      <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+                      <option.icon className="mr-2 h-4 w-4 text-muted-foreground cursor-pointer" />
                     )}
                     <span>{option.label}</span>
                   </CommandItem>

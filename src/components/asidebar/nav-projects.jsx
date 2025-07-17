@@ -64,7 +64,7 @@ export function NavProjects() {
     });
 
   const projects = data?.projects || [];
-  const pagination = data?.pagination || ({});
+  const pagination = data?.pagination || {};
   const hasMore = pagination?.totalPages > pageNumber;
 
   const fetchNextPage = () => {
@@ -113,7 +113,7 @@ export function NavProjects() {
             <button
               onClick={onOpen}
               type="button"
-              className="flex size-5 items-center justify-center rounded-full border"
+              className="flex size-5 items-center justify-center rounded-full border cursor-pointer"
             >
               <Plus className="size-3.5" />
             </button>
@@ -139,11 +139,11 @@ export function NavProjects() {
                 <Button
                   variant="link"
                   type="button"
-                  className="h-0 p-0 text-[13px] underline font-semibold mt-4"
                   onClick={onOpen}
+                  className="group h-auto p-0 text-[13px] text-blue-600 underline font-semibold mt-4 cursor-pointer flex items-center gap-1"
                 >
                   Create a project
-                  <ArrowRight />
+                  <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </PermissionsGuard>
             </div>
@@ -160,14 +160,14 @@ export function NavProjects() {
                     </Link>
                   </SidebarMenuButton>
                   <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <SidebarMenuAction showOnHover>
+                    <DropdownMenuTrigger>
+                      <SidebarMenuAction>
                         <MoreHorizontal />
                         <span className="sr-only">More</span>
                       </SidebarMenuAction>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
-                      className="w-48 rounded-lg"
+                      className="w-48 rounded-lg cursor-pointer"
                       side={isMobile ? "bottom" : "right"}
                       align={isMobile ? "end" : "start"}
                     >
@@ -187,7 +187,7 @@ export function NavProjects() {
                           onClick={() => onOpenDialog(item)}
                         >
                           <Trash2 className="text-muted-foreground" />
-                          <span>Delete Project</span>
+                          <span className="text-red-700 ">Delete Project</span>
                         </DropdownMenuItem>
                       </PermissionsGuard>
                     </DropdownMenuContent>

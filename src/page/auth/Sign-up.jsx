@@ -57,13 +57,18 @@ const SignUp = () => {
     if (isPending) return;
     mutate(values, {
       onSuccess: () => {
+        toast({
+          title: "Success",
+          description: "Account created successfully",
+          variant: "success",
+        });
         navigate("/");
       },
       onError: (error) => {
         console.log(error);
         toast({
           title: "Error",
-          description: error.message,
+          description: error.response.data?.message,
           variant: "destructive",
         });
       },

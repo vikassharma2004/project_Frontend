@@ -161,8 +161,8 @@ export default function EditTaskForm({ task, onClose }) {
             <FormField control={form.control} name="dueDate" render={({ field }) => (
               <FormItem>
                 <FormLabel>Due Date</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
+                <Popover asChild> 
+                  <PopoverTrigger>
                     <FormControl>
                       <Button variant="outline">
                         {field.value ? format(field.value, "PPP") : "Pick a date"}

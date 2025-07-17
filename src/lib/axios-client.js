@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_API_BASE_URL;
+const baseURL="https://backend-ten-pi-20.vercel.app/api";
 
 const options = {
   baseURL,

@@ -51,7 +51,7 @@ const Asidebar = () => {
                 to={`/workspace/${workspaceId}`}
                 className="hidden md:flex ml-2 items-center gap-2 self-center font-medium"
               >
-                Team Sync.
+                Team Trackr
               </Link>
             )}
           </div>
@@ -77,7 +77,7 @@ const Asidebar = () => {
                 />
               ) : (
                 <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
+                  <DropdownMenuTrigger>
                     <SidebarMenuButton
                       size="lg"
                       className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
@@ -99,7 +99,7 @@ const Asidebar = () => {
                     </SidebarMenuButton>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent
-                    className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+                    className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg cursor-pointer"
                     side={"bottom"}
                     align="start"
                     sideOffset={4}

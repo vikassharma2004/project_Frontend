@@ -62,9 +62,10 @@ const SignIn = () => {
         navigate(decodedUrl || `/workspace/${user.currentWorkspace}`);
       },
       onError: (error) => {
+      
         toast({
           title: "Error",
-          description: error.message,
+          description: error.response.data?.message,
           variant: "destructive",
         });
       },

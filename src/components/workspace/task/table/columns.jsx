@@ -4,10 +4,7 @@ import { DataTableColumnHeader } from "./table-column-header";
 import { DataTableRowActions } from "./table-row-actions";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
-import {
-  TaskPriorityEnum,
-  TaskStatusEnum,
-} from "@/constant";
+import { TaskPriorityEnum, TaskStatusEnum } from "@/constant";
 
 import {
   formatStatusToEnum,
@@ -53,9 +50,7 @@ export const getColumns = (projectId) => {
           <Badge variant="outline" className="capitalize shrink-0 h-[25px]">
             {row.original.taskCode}
           </Badge>
-          <span className="block lg:max-w-[220px] max-w-[200px] font-medium">
-            {row.original.title}
-          </span>
+         
         </div>
       ),
     },

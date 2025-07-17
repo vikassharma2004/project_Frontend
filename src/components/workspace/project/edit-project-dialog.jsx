@@ -13,9 +13,9 @@ const EditProjectDialog = (props) => {
   return (
     <div>
       <Dialog modal={true} open={isOpen} onOpenChange={setIsOpen}>
-        <DialogTrigger className="mt-1.5" asChild>
+        <DialogTrigger className="mt-1.5 cursor-pointer" >
           <button>
-            <Edit3 className="w-5 h-5" />
+            <Edit3 className="w-5 h-5 cursor-pointer" />
           </button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-lg border-0">

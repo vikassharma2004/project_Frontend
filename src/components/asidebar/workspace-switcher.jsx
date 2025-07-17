@@ -23,13 +23,12 @@ import useCreateWorkspaceDialog from "@/hooks/use-create-workspace-dialog";
 import { useQuery } from "@tanstack/react-query";
 import { getAllWorkspacesUserIsMemberQueryFn } from "@/lib/api";
 
-
-
 export function WorkspaceSwitcher() {
   const navigate = useNavigate();
   const { isMobile } = useSidebar();
 
   const { onOpen } = useCreateWorkspaceDialog();
+  console.log(onOpen, "onOpen");
   const workspaceId = useWorkspaceId();
 
   const [activeWorkspace, setActiveWorkspace] = React.useState();
@@ -42,7 +41,7 @@ export function WorkspaceSwitcher() {
   });
 
   const workspaces = data?.workspaces;
-
+  console.log(workspaces);
   React.useEffect(() => {
     if (workspaces?.length) {
       const workspace = workspaceId
@@ -67,7 +66,7 @@ export function WorkspaceSwitcher() {
         <span>Workspaces</span>
         <button
           onClick={onOpen}
-          className="flex size-5 items-center justify-center rounded-full border"
+          className="flex size-5 items-center justify-center rounded-full border cursor-pointer"
         >
           <Plus className="size-3.5" />
         </button>
@@ -75,7 +74,7 @@ export function WorkspaceSwitcher() {
       <SidebarMenu>
         <SidebarMenuItem>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger>
               <SidebarMenuButton
                 size="lg"
                 className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground bg-gray-10"
@@ -99,7 +98,7 @@ export function WorkspaceSwitcher() {
                     </span>
                   </div>
                 )}
-                <ChevronDown className="ml-auto" />
+                <ChevronDown className="ml-15" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent
@@ -113,24 +112,27 @@ export function WorkspaceSwitcher() {
               </DropdownMenuLabel>
               {isPending ? <Loader className=" w-5 h-5 animate-spin" /> : null}
 
-              {workspaces?.map((workspace) => (
-                <DropdownMenuItem
-                  key={workspace._id}
-                  onClick={() => onSelect(workspace)}
-                  className="gap-2 p-2 !cursor-pointer"
-                >
-                  <div className="flex size-6 items-center justify-center rounded-sm border">
-                    {workspace?.name?.split(" ")?.[0]?.charAt(0)}
-                  </div>
-                  {workspace.name}
+              {workspaces?.map((workspace) => {
+                return (
+                  <DropdownMenuItem
+                    key={workspace._id}
+                    onClick={() => onSelect(workspace)}
+                    className="gap-2 p-2 !cursor-pointer"
+                  >
+                    <div className="flex size-6 items-center justify-center rounded-sm border">
+                      {workspace?.name?.split(" ")?.[0]?.charAt(0)}
+                    </div>
+                    {workspace.name}
 
-                  {workspace._id === workspaceId && (
-                    <DropdownMenuShortcut className="tracking-normal !opacity-100">
-                      <Check className="w-4 h-4" />
-                    </DropdownMenuShortcut>
-                  )}
-                </DropdownMenuItem>
-              ))}
+                    {workspace._id === workspaceId && (
+                      <DropdownMenuShortcut className="tracking-normal !opacity-100">
+                        <Check className="w-4 h-4" />
+                      </DropdownMenuShortcut>
+                    )}
+                  </DropdownMenuItem>
+                );
+              })}
+
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className="gap-2 p-2 !cursor-pointer"
@@ -139,7 +141,7 @@ export function WorkspaceSwitcher() {
                 <div className="flex size-6 items-center justify-center rounded-md border bg-background">
                   <Plus className="size-4" />
                 </div>
-                <div className="font-medium text-muted-foreground">
+                <div className="font-medium text-muted-foreground cursor-pointer">
                   Add workspace
                 </div>
               </DropdownMenuItem>

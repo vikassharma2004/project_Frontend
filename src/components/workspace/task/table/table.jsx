@@ -72,7 +72,7 @@ export function DataTable({
         {filtersToolbar && <div className="flex-1">{filtersToolbar}</div>}
 
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger>
             <Button variant="outline" className="ml-auto w-full lg:w-auto">
               Columns <ChevronDown className="ml-1 h-4 w-4" />
             </Button>
@@ -86,9 +86,7 @@ export function DataTable({
                   key={column.id}
                   className="capitalize"
                   checked={column.getIsVisible()}
-                  onCheckedChange={(value) =>
-                    column.toggleVisibility(!!value)
-                  }
+                  onCheckedChange={(value) => column.toggleVisibility(!!value)}
                 >
                   {column.id}
                 </DropdownMenuCheckboxItem>

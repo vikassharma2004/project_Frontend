@@ -35,10 +35,10 @@ export const ConfirmDialog = ({
         </DialogHeader>
         {children && <div className="py-4">{children}</div>}
         <DialogFooter>
-          <Button variant="outline" onClick={handleClose}>
+          <Button variant="outline" onClick={handleClose} className="cursor-pointer">
             {cancelText}
           </Button>
-          <Button onClick={onConfirm} disabled={isLoading}>
+          <Button onClick={onConfirm} disabled={isLoading} className="bg-red-700 hover:bg-red-900 cursor-pointer">
             {isLoading && <Loader className="w-4 h-4 animate-spin" />}
             {confirmText}
           </Button>

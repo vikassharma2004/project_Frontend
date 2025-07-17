@@ -50,12 +50,17 @@ export default function CreateWorkspaceForm({ onClose }) {
         queryClient.resetQueries({ queryKey: ["userWorkspaces"] });
         const workspace = data.workspace;
         onClose();
+        toast({
+          title: "Success",
+          description: "Workspace created successfully",
+          variant: "success",
+        });
         navigate(`/workspace/${workspace._id}`);
       },
       onError: (error) => {
         toast({
           title: "Error",
-          description: error.message,
+          description: error.response.data?.message,
           variant: "destructive",
         });
       },
@@ -143,7 +148,7 @@ export default function CreateWorkspaceForm({ onClose }) {
         </Form>
       </div>
 
-      <div className="relative flex-1 shrink-0 hidden bg-muted md:block bg-[url('/images/workspace.jpg')] bg-cover bg-center h-full" />
+      <div className="relative flex-1 shrink-0 hidden bg-muted md:block bg-[url('/images/workspace.jpg')] bg-cover bg-center h-full cursor-pointer" />
     </main>
   );
 }

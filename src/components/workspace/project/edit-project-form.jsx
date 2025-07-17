@@ -30,6 +30,7 @@ export default function EditProjectForm({ project, onClose }) {
   const queryClient = useQueryClient();
 
   const [emoji, setEmoji] = useState("📊");
+  const [popoverOpen, setPopoverOpen] = useState(false); // Add controlled state for popover
 
   const projectId = project?._id;
 
@@ -62,6 +63,7 @@ export default function EditProjectForm({ project, onClose }) {
 
   const handleEmojiSelection = (emoji) => {
     setEmoji(emoji);
+    setPopoverOpen(false); // Close popover after selection
   };
 
   const onSubmit = (values) => {
@@ -118,17 +120,28 @@ export default function EditProjectForm({ project, onClose }) {
               <label className="block text-sm font-medium text-gray-700">
                 Select Emoji
               </label>
-              <Popover>
-                <PopoverTrigger asChild>
+              <Popover 
+                open={popoverOpen} 
+                onOpenChange={setPopoverOpen}
+              >
+                <PopoverTrigger>
                   <Button
                     variant="outline"
                     className="font-normal size-[60px] !p-2 !shadow-none mt-2 items-center rounded-full"
+                    type="button" // Important to prevent form submission
                   >
                     <span className="text-4xl">{emoji}</span>
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent align="start" className="!p-0">
-                  <EmojiPickerComponent onSelectEmoji={handleEmojiSelection} />
+                <PopoverContent 
+                  align="start" 
+                  className="!p-0"
+                  onInteractOutside={(e) => e.preventDefault()} // Prevent auto-close on outside click
+                >
+                  <EmojiPickerComponent 
+                    onSelectEmoji={handleEmojiSelection}
+                    onClick={(e) => e.stopPropagation()} // Prevent event bubbling
+                  />
                 </PopoverContent>
               </Popover>
             </div>
