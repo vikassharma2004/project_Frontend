@@ -7,7 +7,7 @@ const GoogleOauthButton = (props) => {
   const { label } = props;
 
   const handleClick = () => {
-    window.location.href = `${baseURL || "http://localhost:4000/api"}/auth/google`;
+    window.location.href = `${baseURL || "https://backend-ten-pi-20.vercel.app/api"}/auth/google`;
   };
   return (
     <Button
